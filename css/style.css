@@ -254,6 +254,7 @@ a.chip:hover { background: var(--brown); color: var(--white); }
 .progress { display: grid; grid-template-columns: 1fr 300px 1fr; align-items: center; gap: 60px; max-width: 900px; margin: 90px auto 0; }
 .progress__stat .label { font-size: 22px; }
 .progress__stat .value { font-size: 40px; font-weight: 700; margin-top: 8px; }
+.progress__stat .value-inr { font-size: 20px; font-weight: 700; color: var(--peach); margin-top: 4px; letter-spacing: .02em; }
 .progress__ring { width: 300px; height: 300px; }
 .goal__copy { max-width: 1000px; margin: 90px auto 0; font-size: 22px; line-height: 1.35; }
 .goal__copy p + p { margin-top: 30px; }
@@ -396,6 +397,7 @@ a.chip:hover { background: var(--brown); color: var(--white); }
   .progress__ring { grid-column: 1 / -1; width: 220px; height: 220px; margin: 0 auto; order: -1; }
   .progress__stat .label { font-size: 17px; }
   .progress__stat .value { font-size: 26px; }
+  .progress__stat .value-inr { font-size: 15px; }
   .goal__copy { font-size: 17px; margin-top: 48px; }
 
   .join { padding: 56px 0; text-align: center; }
