@@ -32,7 +32,7 @@
     hero.classList.add('is-ready');
     if (!parts.length) return;
     gsap.set(parts, { opacity: 0, y: 28 });
-    var media = hero.querySelector('.hero__media img, .hero__media video');
+    var media = hero.querySelector('.hero__media video, .hero__media img');
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     if (media) tl.fromTo(media, { scale: 1.12 }, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
     tl.to(parts, { opacity: 1, y: 0, duration: .9, stagger: .14 }, .25);

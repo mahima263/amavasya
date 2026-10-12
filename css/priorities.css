@@ -471,3 +471,9 @@
 .pr-slider__panel--roomy { padding-bottom: 140px; }
 @media (max-width: 960px) { .pr-slider__panel--roomy { padding-bottom: 40px; } }
 @media (max-width: 960px) { .pr-support__text br, .pr-quote br { display: none; } }
+
+/* decorative motif in place of a photo */
+.pr-motif { display: grid; place-items: center; width: 100%; height: 100%; min-height: 420px; background: var(--peach); color: var(--brick); }
+.pr-motif svg { width: 46%; max-width: 260px; height: auto; }
+.pr-motif--rose { background: var(--peach); color: var(--rose); }
+@media (max-width: 960px) { .pr-motif { min-height: 260px; } .pr-motif svg { width: 40%; } }
