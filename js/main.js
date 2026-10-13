@@ -126,37 +126,31 @@
   });
 
   /* ---- Rotating content sliders ([data-pr-slider]): auto-advance lists (.pr-slider__list li)
-     and slides (.pr-slide); arrow click advances; pauses on hover/focus; respects reduced motion ---- */
-  var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+     and slides (.pr-slide); arrow click advances; pauses on mouse hover; starts when scrolled into view ---- */
   document.querySelectorAll('[data-pr-slider]').forEach(function (s) {
     var items = s.querySelectorAll('.pr-slider__list li, .pr-slide');
     if (items.length < 2) { var a = s.querySelector('.pr-slider__arrow'); if (a) a.style.visibility = 'hidden'; return; }
     var i = Math.max(0, Array.prototype.findIndex.call(items, function (el) { return el.classList.contains('is-active'); }));
-    var delay = parseInt(s.getAttribute('data-interval') || '2000', 10), timer, inView = false, hovered = false;
+    var delay = parseInt(s.getAttribute('data-interval') || '1600', 10), timer = null, inView = true;
     function show(k) {
       i = (k + items.length) % items.length;
       items.forEach(function (el, j) { el.classList.toggle('is-active', j === i); });
       var media = s.querySelectorAll('.pr-slider__media img[data-slide]');
       if (media.length) media.forEach(function (im) { im.classList.toggle('is-active', parseInt(im.getAttribute('data-slide'), 10) === i); });
     }
-    function stop() { clearInterval(timer); timer = null; }
-    function play() { stop(); if (!noMotion && inView && !hovered) timer = setInterval(function () { show(i + 1); }, delay); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() { stop(); if (inView && !document.hidden) timer = setInterval(function () { show(i + 1); }, delay); }
     var btn = s.querySelector('.pr-slider__arrow');
     if (btn) btn.addEventListener('click', function () { show(i + 1); play(); });
     items.forEach(function (el, j) { el.addEventListener('click', function () { show(j); play(); }); });
-    s.addEventListener('mouseenter', function () { hovered = true; stop(); });
-    s.addEventListener('mouseleave', function () { hovered = false; play(); });
-    s.addEventListener('focusin', function () { hovered = true; stop(); });
-    s.addEventListener('focusout', function () { hovered = false; play(); });
-    /* start only once the section is on screen; reset to first item each time it comes back */
+    /* always auto-advances (no hover pause); only sleeps while fully off-screen or tab hidden */
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { if (!inView) { inView = true; show(0); play(); } }
-          else { inView = false; stop(); }
-        });
-      }, { threshold: 0.35 }).observe(s);
-    } else { inView = true; play(); }
+        entries.forEach(function (e) { inView = e.isIntersecting; if (inView) { if (!timer) play(); } else stop(); });
+      }, { threshold: 0 }).observe(s);
+    }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else play(); });
+    play();
   });
 
   /* ---- Accordion: .acc > .acc__item > .acc__btn / .acc__panel ---- */

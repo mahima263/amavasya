@@ -201,6 +201,8 @@
 .st-split__inner { display: grid; grid-template-columns: 470px 1fr; gap: 80px; align-items: center; }
 .st-split__icon { display: grid; place-items: center; }
 .st-split__icon img { width: 430px; max-height: 340px; object-fit: contain; }
+.st-split__stack { display: grid; grid-template-columns: 1fr; gap: 14px; justify-items: center; }
+.st-split__stack img { width: 270px; height: 270px; max-height: none; object-fit: cover; object-position: center top; border-radius: 4px; }
 .st-split__text { max-width: 730px; }
 .st-feature { display: grid; grid-template-columns: 1fr 1fr; min-height: 680px; background: var(--brown); color: var(--white); }
 .st-feature__media img { width: 100%; height: 100%; object-fit: cover; }
@@ -248,7 +250,8 @@
   .story-card--feature .story-card__title, .story-card--feature.story-card--flip .story-card__title { font-size: 34px; }
   .st-split__inner { grid-template-columns: 300px 1fr; gap: 48px; }
   .st-split__icon img { width: 280px; }
-  .st2-split .st-split__icon img { max-width: 220px; max-height: 320px; }
+  .st-split__stack img { width: 230px; height: 230px; }
+  .st2-split .st-split__icon img { height: 320px; max-width: 220px; max-height: 320px; }
   .st-hero__title { font-size: 56px; }
   .st-hero__intro { font-size: 28px; }
 }
@@ -302,6 +305,8 @@
   .st-split { padding: 40px 0 32px; }
   .st-split__inner { grid-template-columns: 1fr; gap: 28px; }
   .st-split__icon img { width: 140px; max-height: 140px; }
+  .st-split__stack { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .st-split__stack img { width: 100%; height: auto; aspect-ratio: 1 / 1; }
   .st-feature { grid-template-columns: 1fr; min-height: 0; }
   .st-feature__media img { height: 260px; }
   .st-feature--flip .st-feature__media { order: 0; }
@@ -336,14 +341,15 @@
 .st2-dots { position: absolute; left: 50%; bottom: 40px; display: flex; gap: 8px; transform: translateX(-50%); }
 .st2-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.55); }
 .st2-dots span:first-child { background: var(--white); }
-.st2-gallery { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; height: 650px; }
+.st2-gallery { position: relative; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 650px; gap: 10px; height: 650px; margin: 0; overflow: hidden; isolation: isolate; }
 .st2-gallery--tight { gap: 0; }
-.st2-gallery img { width: 100%; height: 100%; object-fit: cover; }
+.st2-gallery img { display: block; width: 100%; height: 650px; min-height: 0; max-height: 100%; object-fit: cover; }
 .st2-feature { min-height: 610px; }
 .st2-feature .st-feature__text { padding: 70px 60px 70px 56px; }
-.st2-split { padding: 90px 0 70px; }
+.st2-split { position: relative; z-index: 1; background: var(--white); padding: 90px 0 70px; }
 .st2-split .st-split__inner { grid-template-columns: 470px 1fr; gap: 76px; }
-.st2-split .st-split__icon img { width: auto; max-width: 340px; max-height: 470px; }
+.st2-split .st-split__icon { align-self: center; }
+.st2-split .st-split__icon img { display: block; width: auto; height: 470px; max-width: 340px; max-height: 470px; object-fit: contain; }
 .st2-split .st-split__text { max-width: 680px; }
 .st2-split .st-split__text p:first-of-type { margin-top: 36px; }
 .st-section--peach.st2-peach { padding: 76px 0 84px; }
@@ -355,13 +361,13 @@
   .st2-band .st-band__media img { height: 320px; }
   .st2-band .st-band__inner, .st2-band--left .st-band__inner, .st2-band--full .st-band__inner { padding: 40px var(--gutter) 44px; }
   .st2-photo--tall { height: 300px; }
-  .st2-gallery { grid-template-columns: 1fr; height: auto; gap: 8px; }
-  .st2-gallery img { height: 240px; }
+  .st2-gallery { grid-template-columns: 1fr; grid-template-rows: 240px 240px; height: auto; gap: 8px; }
+  .st2-gallery img { height: 240px; max-height: none; }
   .st2-dots { bottom: 14px; }
   .st2-feature { min-height: 0; }
   .st2-split { padding: 40px 0 32px; }
   .st2-split .st-split__inner { grid-template-columns: 1fr; gap: 24px; }
-  .st2-split .st-split__icon img { max-width: 150px; max-height: 160px; }
+  .st2-split .st-split__icon img { height: 160px; max-width: 150px; max-height: 160px; }
   .st2-split .st-split__text p:first-of-type { margin-top: 20px; }
   .st2-cta { padding: 44px 0 48px; }
 }

@@ -95,7 +95,6 @@
   .pr-split, .pr-slider, .st-split__inner, .st-feature, .st-band--split, .st2-band, .st2-band--left { grid-template-columns: 1fr 1fr !important; }
   .cstats .container { grid-template-columns: 1fr 1fr 1fr !important; }
   .cintro__top { grid-template-columns: 1fr 1fr !important; }
-  .leader { flex-direction: row !important; align-items: center !important; gap: 16px; padding: 18px 12px !important; }
   .tl__eras { grid-template-columns: repeat(3, 1fr) !important; gap: 8px 16px !important; }
   .tl__btn { flex-direction: column !important; text-align: center !important; border-bottom: 0 !important; }
   .tl__dot { margin-bottom: 12px !important; }
