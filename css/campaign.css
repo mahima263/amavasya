@@ -49,8 +49,8 @@
   background: var(--white); color: var(--brown); border-radius: 12px 0 0 12px;
 }
 .ptile--img.ptile--left-label .ptile__label { right: auto; left: 0; border-radius: 0 12px 12px 0; padding-left: 44px; }
-.ptile__eyebrow { font-size: 18px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-.ptile__title { margin-top: 10px; font-size: 24px; font-weight: 700; line-height: 1.2; }
+.ptile__eyebrow { font-size: 22px; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
+.ptile__title { margin-top: 8px; font-size: 22px; font-weight: 400; line-height: 1.25; }
 .ptile--text { padding: 56px 80px 60px; color: var(--white); display: flex; flex-direction: column; justify-content: flex-start; }
 .ptile--olive { background: var(--olive); }
 .ptile--gold { background: var(--gold); }
@@ -165,7 +165,7 @@
   .ptile--img { min-height: 300px; }
   .ptile--t1 { order: 1; } .ptile--t2 { order: 2; } .ptile--t3 { order: 3; } .ptile--t4 { order: 4; } .ptile--t5 { order: 5; } .ptile--t6 { order: 6; }
   .ptile__label { width: auto; max-width: 85%; padding: 16px 20px 18px 24px; bottom: 28px; }
-  .ptile__eyebrow { font-size: 13px; } .ptile__title { font-size: 18px; }
+  .ptile__eyebrow { font-size: 15px; } .ptile__title { font-size: 16px; }
   .ptile--text { padding: 36px var(--gutter) 40px; }
   .ptile__icon { height: 60px; } .ptile__icon img { max-height: 60px; }
   .ptile__text { margin-top: 24px; }
