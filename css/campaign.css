@@ -30,7 +30,7 @@
 .cstats__fill.is-in { width: var(--pct); }
 .cstats__marker { position: absolute; right: -1px; top: 50%; transform: translate(50%, -50%); width: 22px; height: 22px; border-radius: 50%; background: var(--white); border: 4px solid var(--brick); font-size: 0; }
 .cstats__marker::after { content: attr(data-label); }
-.cstats__fill.is-in .cstats__marker::before { content: "$477M · ₹4,300 Cr"; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 13px; font-weight: 700; color: var(--white); background: var(--brick); padding: 4px 10px; border-radius: 4px; }
+.cstats__fill.is-in .cstats__marker::before { content: "$600M · ₹5,000 Cr"; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 13px; font-weight: 700; color: var(--white); background: var(--brick); padding: 4px 10px; border-radius: 4px; }
 .cstats__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .cstats__icon { height: 80px; display: flex; align-items: center; justify-content: center; }
 .cstats__icon img { max-height: 80px; width: auto; }

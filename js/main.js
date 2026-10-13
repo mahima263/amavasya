@@ -132,22 +132,31 @@
     var items = s.querySelectorAll('.pr-slider__list li, .pr-slide');
     if (items.length < 2) { var a = s.querySelector('.pr-slider__arrow'); if (a) a.style.visibility = 'hidden'; return; }
     var i = Math.max(0, Array.prototype.findIndex.call(items, function (el) { return el.classList.contains('is-active'); }));
-    var delay = parseInt(s.getAttribute('data-interval') || '4000', 10), timer;
+    var delay = parseInt(s.getAttribute('data-interval') || '2000', 10), timer, inView = false, hovered = false;
     function show(k) {
       i = (k + items.length) % items.length;
       items.forEach(function (el, j) { el.classList.toggle('is-active', j === i); });
       var media = s.querySelectorAll('.pr-slider__media img[data-slide]');
       if (media.length) media.forEach(function (im) { im.classList.toggle('is-active', parseInt(im.getAttribute('data-slide'), 10) === i); });
     }
-    function play() { clearInterval(timer); if (!noMotion) timer = setInterval(function () { show(i + 1); }, delay); }
+    function stop() { clearInterval(timer); timer = null; }
+    function play() { stop(); if (!noMotion && inView && !hovered) timer = setInterval(function () { show(i + 1); }, delay); }
     var btn = s.querySelector('.pr-slider__arrow');
     if (btn) btn.addEventListener('click', function () { show(i + 1); play(); });
     items.forEach(function (el, j) { el.addEventListener('click', function () { show(j); play(); }); });
-    s.addEventListener('mouseenter', function () { clearInterval(timer); });
-    s.addEventListener('mouseleave', play);
-    s.addEventListener('focusin', function () { clearInterval(timer); });
-    s.addEventListener('focusout', play);
-    play();
+    s.addEventListener('mouseenter', function () { hovered = true; stop(); });
+    s.addEventListener('mouseleave', function () { hovered = false; play(); });
+    s.addEventListener('focusin', function () { hovered = true; stop(); });
+    s.addEventListener('focusout', function () { hovered = false; play(); });
+    /* start only once the section is on screen; reset to first item each time it comes back */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { if (!inView) { inView = true; show(0); play(); } }
+          else { inView = false; stop(); }
+        });
+      }, { threshold: 0.35 }).observe(s);
+    } else { inView = true; play(); }
   });
 
   /* ---- Accordion: .acc > .acc__item > .acc__btn / .acc__panel ---- */

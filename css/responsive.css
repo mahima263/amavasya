@@ -160,3 +160,12 @@
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .brand__sep, .footer__brand .brand__sep { width: 1px; }
 }
+
+/* sub-nav tabs: scroll horizontally on phones instead of overflowing */
+@media (max-width: 739px) {
+  .subnav .container { gap: 12px; }
+  .subnav__list { gap: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex: 1 1 auto; min-width: 0; padding-right: 8px; }
+  .subnav__list::-webkit-scrollbar { display: none; }
+  .subnav__list li { flex: 0 0 auto; }
+  .subnav__link { white-space: nowrap; font-size: 12px; }
+}
