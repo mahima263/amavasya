@@ -65,7 +65,7 @@ a.chip:hover { background: var(--brick); color: var(--white); transform: transla
 .play { transition: transform .3s, background .3s, box-shadow .3s; }
 .play::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid rgba(255,255,255,.6); animation: playPulse 2.2s ease-out infinite; }
 @keyframes playPulse { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.6); opacity: 0; } }
-.video-block:hover .play { background: rgba(171,69,49,.85); border-color: #fff; box-shadow: 0 0 0 10px rgba(255,255,255,.12); }
+.video-block:hover .play { background: var(--brick); border-color: #fff; box-shadow: 0 0 0 10px rgba(255,255,255,.12); }
 
 /* ---------- Hero ---------- */
 .hero__media img { will-change: transform; }
